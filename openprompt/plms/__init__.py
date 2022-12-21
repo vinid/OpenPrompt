@@ -14,7 +14,9 @@ from transformers import BertConfig, BertTokenizer, BertModel, BertForMaskedLM, 
                          GPT2Config, GPT2Tokenizer, GPT2LMHeadModel, \
                          OPTConfig, OPTForCausalLM, \
                          ElectraConfig, ElectraForMaskedLM, ElectraTokenizer, XLMRobertaConfig, \
-                         XLMRobertaTokenizer, XLMRobertaForMaskedLM
+                         XLMRobertaTokenizer, XLMRobertaForMaskedLM, DebertaV2Tokenizer, DebertaV2ForMaskedLM,\
+                         DebertaV2Config
+
 from collections import namedtuple
 from yacs.config import CfgNode
 
@@ -28,6 +30,12 @@ _MODEL_CLASSES = {
         'config': BertConfig,
         'tokenizer': BertTokenizer,
         'model':BertForMaskedLM,
+        'wrapper': MLMTokenizerWrapper,
+    }),
+    'deberta-v3': ModelClass(**{
+        'config': DebertaV2Config,
+        'tokenizer': DebertaV2Tokenizer,
+        'model': DebertaV2ForMaskedLM,
         'wrapper': MLMTokenizerWrapper,
     }),
     'xlm-roberta-base': ModelClass(**{
